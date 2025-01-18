@@ -1,0 +1,148 @@
+﻿@page
+@model IndexModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To My Website!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/images/BGphoto.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0);
+            color: #fff;
+            padding: 2rem 0 1rem;
+            text-align: center;
+            margin-top: 75px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-top: -75px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            width: 95%;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            gap: 70px;
+            justify-content: center;
+            padding: 0.5rem 0;
+            border-radius: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                margin: 0 15px;
+                font-weight: bold;
+                transition: color 0.3s ease;
+            }
+
+                nav a:hover {
+                    color: lightseagreen;
+                    text-decoration: underline;
+                }
+
+        section {
+            padding: 25px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 30px;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 95%;
+        }
+
+        h1, h2, p {
+            margin: 0 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/images/profile.jpg" alt="Profile Picture" class="profile-image">
+        <h1>Welcome To My Website</h1>
+    </header>
+
+    <nav>
+        <a href="#about-me">About Me</a>
+        <a href="#my-education">My Education</a>
+        <a href="/MyProjects">My Projects</a>
+        <a href="#contact-details">Contact Details</a>
+    </nav>
+
+    <main>
+        <section id="about-me">
+            <h2 style="font-size: 2.5rem; padding: 15px;">About Me</h2>
+            <p>Hello everyone, and thank you for reviewing my website!</p>
+            <p>I have just recently graduated with my BSc in Computer Science from HIT.</p>
+            <p>I am creating this website as a personal project to showcase my skills,</p>
+            <p>with the hope of continuing to evolve it as I grow and learn.</p>
+            <p>At the moment, I am searching for opportunities to start working in my field as a Software Developer.</p>
+            <p>I have an interest in Full-Stack Development, Back-End Development, and Deep Learning (not in a specific order).</p>
+            <p>I have a good understanding and experience in the following programming languages:</p>
+            <p>Python, C#, Java, JavaScript, C, C++</p>
+            <p>My experience so far comes from school, college, projects, and courses I have taken.</p>
+            <p>I urge you to explore this website, my education, and my projects and give me your honest feedback.</p>
+            <p>Please feel free to contact me using my personal details.</p>
+        </section>
+        <section id="my-education">
+            <h2 style="font-size: 2.5rem; padding: 15px;">My Education</h2>
+            <p style="font-weight: bold; font-size: 1.3rem;">HIT (College)</p>
+
+            <p>I started my college journey in October 2022 and completed my BSc in Computer Science three years later.</p>
+            <p>Here are some of the courses I have taken:</p>
+            <p>Object-Oriented Programming</p>
+            <p>Data Structures</p>
+            <p>Reverse Engineering and Malware Analysis</p>
+            <p>Machine Learning and Deep Learning</p>
+            <p>Client-Side Programming</p>
+            <p>Classic Design Patterns</p>
+            <p>Cybersecurity</p>
+            <p>Computer Networks</p>
+
+            <p style="font-weight: bold; font-size: 1.1rem;">Ginsburg Ha'Alon (Middle/High School)</p>
+
+            <p>Between 2012-2017, I studied at one of Yavne's (my hometown) high schools, Ginsburg Ha'Alon.</p>
+            <p>I chose Physics and Computer Science as my extended majors.</p>
+            <p>At the end of six years of studying, I achieved an average score of 106.5 points,</p>
+            <p>completing five study units in the following subjects: Math, Physics, Web Development, Written Coding, and English.</p>
+        </section>
+        <section id="contact-details">
+            <h2 style="font-size: 2.5rem; padding: 15px;">Contact Details</h2>
+            <p>Email: zafrany123@gmail.com</p>
+            <p>Phone: +972-542545030</p>
+            <p>
+                LinkedIn Profile:
+                <a href="https://www.linkedin.com/in/omer-zafrany-030334250" target="_blank">
+                    Omer Zafrany
+                </a>
+            </p>
+        </section>
+    </main>
+
+</body>
+</html>
