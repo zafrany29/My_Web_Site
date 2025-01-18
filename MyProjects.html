@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/images/BGphoto.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 2rem 0 1rem;
+            text-align: center;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+            .home-button:hover {
+                background-color: lightseagreen;
+            }
+
+            .home-button.bottom-center {
+                position: static;
+                margin: 20px auto;
+                display: block;
+                text-align: center;
+            }
+
+        .slider-container {
+            position: relative;
+            width: 80%;
+            margin: 30px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease;
+        }
+
+            .slider-track img {
+                width: 120px;
+                height: 120px;
+                margin: 0 15px;
+                opacity: 0.5;
+                transition: transform 0.5s ease, opacity 0.5s ease;
+                object-fit: cover;
+                cursor: default;
+            }
+
+                .slider-track img.main {
+                    width: 170px;
+                    height: 170px;
+                    transform: scale(1.2);
+                    opacity: 1;
+                    z-index: 2;
+                    object-fit: cover;
+                    cursor: pointer;
+                }
+
+        .arrow {
+            position: absolute;
+            cursor: pointer;
+            color: white;
+            font-size: 2rem;
+            user-select: none;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+            .arrow.left {
+                left: 10px;
+            }
+
+            .arrow.right {
+                right: 10px;
+            }
+
+        .project-section {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            width: 80%;
+            text-align: center; 
+        }
+
+            .project-section h2 {
+                text-align: center;
+                color: lightseagreen;
+            }
+
+            .project-section p {
+                text-align: center; 
+            }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = Array.from(document.querySelectorAll(".slider-track img"));
+            const track = document.querySelector(".slider-track");
+            let currentIndex = 0;
+
+            function updateSlider() {
+                images.forEach((img, index) => {
+                    img.classList.remove("main");
+                    img.onclick = null; 
+                    const offset = (index - currentIndex + images.length) % images.length;
+
+                    if (offset === 0) {
+                        img.classList.add("main");
+                        img.onclick = function () { 
+                            document.querySelector(`#project-${index + 1}`).scrollIntoView({ behavior: 'smooth' });
+                        };
+                    }
+                });
+
+                const offsetX = -(currentIndex * (images[0].clientWidth + 30) - (track.offsetWidth / 2 - images[0].clientWidth / 2));
+                track.style.transform = `translateX(${offsetX}px)`;
+            }
+
+            function goToNext() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateSlider();
+            }
+
+            function goToPrevious() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateSlider();
+            }
+
+            document.querySelector(".arrow.left").addEventListener("click", goToPrevious);
+            document.querySelector(".arrow.right").addEventListener("click", goToNext);
+
+            updateSlider(); 
+        });
+    </script>
+</head>
+<body>
+    <a href="/Index" class="home-button">Back to Home Page</a>
+
+    <header>
+        <h1>My Projects</h1>
+    </header>
+
+    <main>
+        <div class="slider-container">
+            <div class="arrow left">&#9664;</div>
+            <div class="slider-track">
+                <img src="/images/Deeplearning2.jpg" alt="Deep Learing">
+                <img src="/images/androidgreen.png" alt="Android Studios">
+                <img src="/images/DesginPatern.png" alt="Desgin Patterns">
+                <img src="/images/oop.png" alt="Snake">
+                <img src="/images/cybersec.jpg" alt="Cyber Security">
+                <img src="/images/CNN.png" alt="Photo Classification">
+                <img src="/images/aboutme.png" alt="About Me">
+            </div>
+            <div class="arrow right">&#9654;</div>
+        </div>
+
+        <section id="project-1" class="project-section">
+            <h2>Nueral Network</h2>
+            <p>Basic implementation of a neural network
+            Using Python and Jupyter Notebook</p>
+            <p>Leveraging PyTorch's MNIST dataset</p>
+            <p>A dataset containing 60,000 images of handwritten digits</p>
+            <p>By implementing a basic neural network and experimenting with several parameters,</p>
+            <p>I achieved accurate classification of the digit in each image.</p>
+            <p>
+                <a href="https://github.com/zafrany29/Neural-Network-Implementation" target="_blank" style="color: lightseagreen; text-decoration: underline;">View On GitHub</a>.
+            </p>
+        </section>
+        <section id="project-2" class="project-section">
+            <h2>Babysitter Finder App</h2>
+            <p>This project was created for the course "Development in Android Environment."</p>
+            <p>Using Android Studio, my collaborators and I built an app designed to help users find a babysitter.</p>
+            <p>The app was developed in Java, and Google's Firebase was used as the database.</p>
+            <p> For optimal performance, I recommend using the emulator "MEMU."</p>
+            <p>The app requires registration as either a customer or a service provider (admin approval is needed to register as a service provider).</p>
+            <p>After registration and login, users are redirected to the homepage, where they can search for, rate, and contact babysitters.</p>
+            <p>The app includes additional features, such as a personal details page, update details functionality, and more.</p>
+            <p>
+                <a href="https://github.com/zafrany29/FinalProject-AndroidStudio" target="_blank" style="color: lightseagreen; text-decoration: underline;">View On GitHub</a>.
+            </p>
+        </section>
+        <section id="project-3" class="project-section">
+            <h2>Quizzy (Desgin Pattern)</h2>
+            <p>This project was created by a group of three, utilizing classic design patterns such as Singleton, DAO, and Builder.</p>
+            <p>using clasic desgin patterns such as: Singletone, DOA and Biulder</p>
+            <p><p>We developed several classes and interfaces that allow users to compose quizzes.</p>
+            <p>The questions are "closed-ended," and the tests can be solved in two ways:</p>
+            <p>1. Via the terminal</p> 
+            <p>2. Via a basic graphical user interface</p>
+            <p>The choice of method is up to the quiz composer.</p>
+            <p>
+                <a href="https://github.com/zafrany29/quizzy" target="_blank" style="color: lightseagreen; text-decoration: underline;">View On GitHub</a>.
+            </p>
+        </section>
+        <section id="project-4" class="project-section">
+            <h2>Snake (Object Orianted Programing</h2>
+            <p>As part of the Object-Oriented Programming course,</p>
+            <p>a college student and I built a modified version of the classic game "Snake".</p>
+            <p>Using inheritance up to the third degree and polymorphism,</p>
+            <p>we enhanced the game by adding fun and exciting bonuses</p>
+            <p>and the ability to save, pause and resume a game at will.</p>
+            <p>
+                <a href="https://github.com/zafrany29/SNAKE-modified" target="_blank" style="color: lightseagreen; text-decoration: underline;">View On GitHub</a>.
+            </p>
+        </section>
+        <section id="project-5" class="project-section">
+            <h2>Cybersecurity Web Application</h2>
+            <p>This project was created as part of a Cybersecurity class at "HIT" college.</p>
+            <p>The project is a web application that "sells" mobile data packages.</p>
+            <p>It includes features such as registration, login, a home page, a "Forgot My Password" feature, and a "Change My Password" feature.</p>
+            <p>The app is connected to a MySQL server for managing users and "packages," as well as an Azure server for hosting.</p>
+            <p>Additionally, it integrates with the MailJet service to send emails containing randomized passwords to users</p>
+            <p>who have forgotten their passwords.</p>
+            <p>The primary focus of the application is to prevent security vulnerabilities such as SQL injection attacks and cross-site scripting (XSS) attacks.</p>
+            <p>This was achieved using several techniques, including password hashing, enforcing advanced password criteria, encrypting SQL queries, and utilizing cookies for user recognition.</p>
+                <a href="https://github.com/zafrany29/Com_LTD_take2" target="_blank" style="color: lightseagreen; text-decoration: underline;">View On GitHub</a>.
+            </p>
+        </section>
+        <section id="project-6" class="project-section">
+            <h2>Photo Classification</h2>
+            <p>As part of the Deep Learning course,</p>
+            <p>this project utilizes a Convolutional Neural Network (CNN) and a fully connected neural network</p>
+            <p>to classify photos into 5 categories.</p>
+            <p>Using the CIFAR10 dataset, which contains labeled images,</p>
+            <p>I constructed a network with several techniques, including:</p>
+            <p>cropping, zooming, and rotating images to achieve better results.</p>
+            <p>
+                <a href="https://github.com/zafrany29/CNN-Implementation" target="_blank" style="color: lightseagreen; text-decoration: underline;">View On GitHub</a>.
+            </p>
+        </section>
+        <section id="project-7" class="project-section">
+            <h2>Personal Website</h2>
+            <p>This is the website you are currently using,</p>
+            <p>a personal project to showcase my knowledge and skills</p>
+            <p>in an interactive way. This project is done using ASP.NET Core</p>
+            <p>
+                <a href="https://github.com/zafrany29/personal_website" target="_blank" style="color: lightseagreen; text-decoration: underline;">View On GitHub</a>.
+            </p>
+        </section>
+    </main>
+
+    <a href="/Index" class="home-button bottom-center">Back to Home Page</a>
+</body>
+</html>
